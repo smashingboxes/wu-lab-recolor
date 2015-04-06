@@ -70,6 +70,16 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/local/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # The main all target
 all: cmake_check_build_system
 	cd /home/joe/src/wu-lab-recolor && $(CMAKE_COMMAND) -E cmake_progress_start /home/joe/src/wu-lab-recolor/CMakeFiles /home/joe/src/wu-lab-recolor/src/CMakeFiles/progress.marks
@@ -102,6 +112,20 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+src/CMakeFiles/LabRecolor.dir/rule:
+	cd /home/joe/src/wu-lab-recolor && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/LabRecolor.dir/rule
+.PHONY : src/CMakeFiles/LabRecolor.dir/rule
+
+# Convenience name for target.
+LabRecolor: src/CMakeFiles/LabRecolor.dir/rule
+.PHONY : LabRecolor
+
+# fast build rule for target.
+LabRecolor/fast:
+	cd /home/joe/src/wu-lab-recolor && $(MAKE) -f src/CMakeFiles/LabRecolor.dir/build.make src/CMakeFiles/LabRecolor.dir/build
+.PHONY : LabRecolor/fast
+
+# Convenience name for target.
 src/CMakeFiles/lab-recolor.dir/rule:
 	cd /home/joe/src/wu-lab-recolor && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/lab-recolor.dir/rule
 .PHONY : src/CMakeFiles/lab-recolor.dir/rule
@@ -114,6 +138,30 @@ lab-recolor: src/CMakeFiles/lab-recolor.dir/rule
 lab-recolor/fast:
 	cd /home/joe/src/wu-lab-recolor && $(MAKE) -f src/CMakeFiles/lab-recolor.dir/build.make src/CMakeFiles/lab-recolor.dir/build
 .PHONY : lab-recolor/fast
+
+lab_recolor.o: lab_recolor.c.o
+.PHONY : lab_recolor.o
+
+# target to build an object file
+lab_recolor.c.o:
+	cd /home/joe/src/wu-lab-recolor && $(MAKE) -f src/CMakeFiles/LabRecolor.dir/build.make src/CMakeFiles/LabRecolor.dir/lab_recolor.c.o
+.PHONY : lab_recolor.c.o
+
+lab_recolor.i: lab_recolor.c.i
+.PHONY : lab_recolor.i
+
+# target to preprocess a source file
+lab_recolor.c.i:
+	cd /home/joe/src/wu-lab-recolor && $(MAKE) -f src/CMakeFiles/LabRecolor.dir/build.make src/CMakeFiles/LabRecolor.dir/lab_recolor.c.i
+.PHONY : lab_recolor.c.i
+
+lab_recolor.s: lab_recolor.c.s
+.PHONY : lab_recolor.s
+
+# target to generate assembly for a file
+lab_recolor.c.s:
+	cd /home/joe/src/wu-lab-recolor && $(MAKE) -f src/CMakeFiles/LabRecolor.dir/build.make src/CMakeFiles/LabRecolor.dir/lab_recolor.c.s
+.PHONY : lab_recolor.c.s
 
 main.o: main.c.o
 .PHONY : main.o
@@ -148,6 +196,11 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... lab-recolor"
+	@echo "... LabRecolor"
+	@echo "... test"
+	@echo "... lab_recolor.o"
+	@echo "... lab_recolor.i"
+	@echo "... lab_recolor.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

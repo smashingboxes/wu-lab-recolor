@@ -5,3 +5,7 @@ set(CMAKE_LIBRARY_OUTOUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)
 set(CMAKE_RUNTIME_OUTOUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)
 
 add_subdirectory(src)
+add_subdirectory(test)
+
+enable_testing()
+add_test(NAME LabRecolorTest COMMAND Test)

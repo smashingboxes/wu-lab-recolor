@@ -12,15 +12,21 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.2.1/CMakeSystem.cmake"
   "CMakeLists.txt"
   "src/CMakeLists.txt"
+  "test/CMakeLists.txt"
   "/usr/local/share/cmake-3.2/Modules/CMakeCInformation.cmake"
   "/usr/local/share/cmake-3.2/Modules/CMakeCXXInformation.cmake"
   "/usr/local/share/cmake-3.2/Modules/CMakeCommonLanguageInclude.cmake"
   "/usr/local/share/cmake-3.2/Modules/CMakeGenericSystem.cmake"
+  "/usr/local/share/cmake-3.2/Modules/CMakeParseArguments.cmake"
   "/usr/local/share/cmake-3.2/Modules/CMakeSystemSpecificInformation.cmake"
   "/usr/local/share/cmake-3.2/Modules/CMakeSystemSpecificInitialize.cmake"
   "/usr/local/share/cmake-3.2/Modules/Compiler/GNU-C.cmake"
   "/usr/local/share/cmake-3.2/Modules/Compiler/GNU-CXX.cmake"
   "/usr/local/share/cmake-3.2/Modules/Compiler/GNU.cmake"
+  "/usr/local/share/cmake-3.2/Modules/FindImageMagick.cmake"
+  "/usr/local/share/cmake-3.2/Modules/FindPackageHandleStandardArgs.cmake"
+  "/usr/local/share/cmake-3.2/Modules/FindPackageMessage.cmake"
+  "/usr/local/share/cmake-3.2/Modules/FindPkgConfig.cmake"
   "/usr/local/share/cmake-3.2/Modules/Platform/Linux-GNU-C.cmake"
   "/usr/local/share/cmake-3.2/Modules/Platform/Linux-GNU-CXX.cmake"
   "/usr/local/share/cmake-3.2/Modules/Platform/Linux-GNU.cmake"
@@ -38,9 +44,12 @@ set(CMAKE_MAKEFILE_OUTPUTS
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "test/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "src/CMakeFiles/lab-recolor.dir/DependInfo.cmake"
+  "src/CMakeFiles/LabRecolor.dir/DependInfo.cmake"
+  "test/CMakeFiles/Test.dir/DependInfo.cmake"
   )

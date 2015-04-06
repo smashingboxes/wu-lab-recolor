@@ -82,14 +82,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joe/src/wu-lab-recolor/CMakeFiles /home/joe/src/wu-lab-recolor/CMakeFiles/progress.marks
-	$(MAKE) -f CMakeFiles/Makefile2 all
+	cd /home/joe/src/wu-lab-recolor && $(CMAKE_COMMAND) -E cmake_progress_start /home/joe/src/wu-lab-recolor/CMakeFiles /home/joe/src/wu-lab-recolor/test/CMakeFiles/progress.marks
+	cd /home/joe/src/wu-lab-recolor && $(MAKE) -f CMakeFiles/Makefile2 test/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/joe/src/wu-lab-recolor/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) -f CMakeFiles/Makefile2 clean
+	cd /home/joe/src/wu-lab-recolor && $(MAKE) -f CMakeFiles/Makefile2 test/clean
 .PHONY : clean
 
 # The main clean target
@@ -98,57 +98,56 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /home/joe/src/wu-lab-recolor && $(MAKE) -f CMakeFiles/Makefile2 test/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /home/joe/src/wu-lab-recolor && $(MAKE) -f CMakeFiles/Makefile2 test/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/joe/src/wu-lab-recolor && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named LabRecolor
+# Convenience name for target.
+test/CMakeFiles/Test.dir/rule:
+	cd /home/joe/src/wu-lab-recolor && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/Test.dir/rule
+.PHONY : test/CMakeFiles/Test.dir/rule
 
-# Build rule for target.
-LabRecolor: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 LabRecolor
-.PHONY : LabRecolor
-
-# fast build rule for target.
-LabRecolor/fast:
-	$(MAKE) -f src/CMakeFiles/LabRecolor.dir/build.make src/CMakeFiles/LabRecolor.dir/build
-.PHONY : LabRecolor/fast
-
-#=============================================================================
-# Target rules for targets named lab-recolor
-
-# Build rule for target.
-lab-recolor: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 lab-recolor
-.PHONY : lab-recolor
-
-# fast build rule for target.
-lab-recolor/fast:
-	$(MAKE) -f src/CMakeFiles/lab-recolor.dir/build.make src/CMakeFiles/lab-recolor.dir/build
-.PHONY : lab-recolor/fast
-
-#=============================================================================
-# Target rules for targets named Test
-
-# Build rule for target.
-Test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Test
+# Convenience name for target.
+Test: test/CMakeFiles/Test.dir/rule
 .PHONY : Test
 
 # fast build rule for target.
 Test/fast:
-	$(MAKE) -f test/CMakeFiles/Test.dir/build.make test/CMakeFiles/Test.dir/build
+	cd /home/joe/src/wu-lab-recolor && $(MAKE) -f test/CMakeFiles/Test.dir/build.make test/CMakeFiles/Test.dir/build
 .PHONY : Test/fast
+
+test.o: test.c.o
+.PHONY : test.o
+
+# target to build an object file
+test.c.o:
+	cd /home/joe/src/wu-lab-recolor && $(MAKE) -f test/CMakeFiles/Test.dir/build.make test/CMakeFiles/Test.dir/test.c.o
+.PHONY : test.c.o
+
+test.i: test.c.i
+.PHONY : test.i
+
+# target to preprocess a source file
+test.c.i:
+	cd /home/joe/src/wu-lab-recolor && $(MAKE) -f test/CMakeFiles/Test.dir/build.make test/CMakeFiles/Test.dir/test.c.i
+.PHONY : test.c.i
+
+test.s: test.c.s
+.PHONY : test.s
+
+# target to generate assembly for a file
+test.c.s:
+	cd /home/joe/src/wu-lab-recolor && $(MAKE) -f test/CMakeFiles/Test.dir/build.make test/CMakeFiles/Test.dir/test.c.s
+.PHONY : test.c.s
 
 # Help Target
 help:
@@ -156,12 +155,13 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... Test"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... lab-recolor"
-	@echo "... LabRecolor"
-	@echo "... Test"
+	@echo "... test.o"
+	@echo "... test.i"
+	@echo "... test.s"
 .PHONY : help
 
 
@@ -173,6 +173,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/joe/src/wu-lab-recolor && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

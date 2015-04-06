@@ -4,13 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/joe/src/wu-lab-recolor/src/main.c" "/home/joe/src/wu-lab-recolor/src/CMakeFiles/lab-recolor.dir/main.c.o"
+  "/home/joe/src/wu-lab-recolor/src/lab_recolor.c" "/home/joe/src/wu-lab-recolor/src/CMakeFiles/LabRecolor.dir/lab_recolor.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/joe/src/wu-lab-recolor/src/CMakeFiles/LabRecolor.dir/DependInfo.cmake"
   )
 
 # The include file search paths:

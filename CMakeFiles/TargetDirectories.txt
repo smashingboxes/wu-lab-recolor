@@ -1,1 +1,3 @@
+/home/joe/src/wu-lab-recolor/test/CMakeFiles/Test.dir
 /home/joe/src/wu-lab-recolor/src/CMakeFiles/lab-recolor.dir
+/home/joe/src/wu-lab-recolor/src/CMakeFiles/LabRecolor.dir

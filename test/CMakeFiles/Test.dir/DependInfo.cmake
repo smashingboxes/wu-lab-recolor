@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/joe/src/wu-lab-recolor/src/main.c" "/home/joe/src/wu-lab-recolor/src/CMakeFiles/lab-recolor.dir/main.c.o"
+  "/home/joe/src/wu-lab-recolor/test/test.c" "/home/joe/src/wu-lab-recolor/test/CMakeFiles/Test.dir/test.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -15,8 +15,7 @@ set(CMAKE_TARGET_LINKED_INFO_FILES
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
-  "src/LabRecolor"
-  "/usr/include/ImageMagick"
+  "src"
   )
 set(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
 set(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
