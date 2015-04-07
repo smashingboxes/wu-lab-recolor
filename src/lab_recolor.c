@@ -138,7 +138,6 @@ int wu_lab_recolor(FILE* input_file, FILE* output_file, double* input_colors,
       PixelSetColor(recolor_pixels[x], final_color);
     }
     PixelSyncIterator(iterator);
-    DestroyPixelWands(recolor_pixels, (ssize_t) width);
   }
 
   iterator = DestroyPixelIterator(iterator);
