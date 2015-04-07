@@ -1,0 +1,12 @@
+language: ruby
+cache:
+  - apt
+
+# Ubuntu 12.04 uses an old version of ImageMagick (6.6.9-7)
+# which doesn't seem to handle our downsampling methods on raster images
+# properly
+before_install:
+  - sudo add-apt-repository -y ppa:moti-p/cc
+  - sudo apt-get -y --reinstall install imagemagick
+
+script: make && test/Test

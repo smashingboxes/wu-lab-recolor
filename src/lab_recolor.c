@@ -3,6 +3,7 @@
 #include <wand/MagickWand.h>
 #include <math.h>
 #include "lab_recolor.h"
+#include <assert.h>
 
 #define return_with_error(err_name) \
   if(err != NULL) { \
@@ -78,31 +79,31 @@ void _wu_get_mapped_color(char* input_string, char* output_string) {
 };
 
 
-void _wu_get_mapped_color_with_in_out(
-    char* input_string,
-    char* output_string,
-    double* input_colors,
-    double* output_colors,
-    unsigned int count) {
+void _wu_get_mapped_color_with_in_out(char* input_string, char* output_string,
+                                      double* input_colors, double* output_colors,
+                                      unsigned int count) {
   wu_color_count = count;
   _wu_setup_color_arrays(input_colors, output_colors);
   _wu_get_mapped_color(input_string, output_string);
 }
 
-int wu_lab_recolor(FILE* input_file, FILE* output_file, WU_LABRECOLORERR *err) {
+int wu_lab_recolor(FILE* input_file, FILE* output_file, double* input_colors,
+                   double* output_colors, unsigned int count, WU_LABRECOLORERR *err) {
   MagickBooleanType status;
   MagickWand* recolor_wand;
   PixelWand** recolor_pixels;
   PixelIterator* iterator;
-  signed char lab_ints[3];
 
-  char* pixel_color;
   char* pixel_norm_color;
+  char final_color[8];
   size_t width;
   ssize_t y, x;
 
   ExceptionType severity;
   char* description;
+
+  wu_color_count = count;
+  _wu_setup_color_arrays(input_colors, output_colors);
 
   if(input_file == NULL || output_file == NULL) {
     return_with_error(WU_NULL_IMAGE);
@@ -120,19 +121,24 @@ int wu_lab_recolor(FILE* input_file, FILE* output_file, WU_LABRECOLORERR *err) {
     return_with_wand_error(recolor_wand);
   }
 
-  for(y=0; y < (ssize_t) MagickGetImageHeight(recolor_wand); y++) {
+  ssize_t image_height = (ssize_t) MagickGetImageHeight(recolor_wand);
+  for(y=0; y < image_height; y++) {
+    /* printf("\r                  "); */
+    /* printf("Line %zd of %zd", y, image_height); */
     recolor_pixels = PixelGetNextIteratorRow(iterator, &width);
     if(recolor_pixels == (PixelWand **) NULL) {
       break;
     }
 
-    if(y == (ssize_t) MagickGetImageHeight(recolor_wand) - 1) {
-    printf("ROW:\n");
-      for(x=0; x < (ssize_t) width; x++) {
-        pixel_norm_color = PixelGetColorAsNormalizedString(recolor_pixels[x]);
-      }
-      printf("\n\n");
+    for(x=0; x < (ssize_t) width; x++) {
+      pixel_norm_color = PixelGetColorAsNormalizedString(recolor_pixels[x]);
+      strcpy(final_color, "");
+
+      _wu_get_mapped_color(pixel_norm_color, final_color);
+      PixelSetColor(recolor_pixels[x], final_color);
     }
+    PixelSyncIterator(iterator);
+    DestroyPixelWands(recolor_pixels, (ssize_t) width);
   }
 
   iterator = DestroyPixelIterator(iterator);
@@ -144,6 +150,6 @@ int wu_lab_recolor(FILE* input_file, FILE* output_file, WU_LABRECOLORERR *err) {
 
   recolor_wand = DestroyMagickWand(recolor_wand);
   MagickWandTerminus();
+  _wu_teardown();
   return 1;
 }
-

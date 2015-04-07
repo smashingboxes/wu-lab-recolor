@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/LabRecolor.dir/lab_recolor.c.o"
-  "../build/libLabRecolor.pdb"
-  "../build/libLabRecolor.a"
+  "libLabRecolor.pdb"
+  "libLabRecolor.a"
 )
 
 # Per-language clean rules from dependency scanning.

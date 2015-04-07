@@ -12,12 +12,17 @@ void test_lab_recolor() {
   FILE *output_file;
   WU_LABRECOLORERR* err;
 
+  int number_colors = 2;
+  double input_colors[6] = { 100.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+  double output_colors[6] = { 50.0, 100.0, -100.0, 75.0, -75.1, 75.0 };
+
   input_file = fopen("test/fixtures/labtiff.tif", "r");
   assert(input_file);
 
-  output_file = tmpfile();
+  output_file = fopen("test.tif", "w");
 
-  int result = wu_lab_recolor(input_file, output_file, err);
+  int result = wu_lab_recolor(input_file, output_file, input_colors, output_colors,
+                              number_colors, err);
   assert(result);
 
   fseek(output_file, 0L, SEEK_END);
@@ -30,10 +35,15 @@ void test_lab_recolor() {
 }
 
 void test_lab_recolor_with_null_image() {
-  FILE* input_file;
-  FILE* output_file;
+  FILE* input_file = fopen("garbagefilename", "r");
+  FILE* output_file = NULL;
+  int number_colors = 2;
+  double input_colors[6] = { 100.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+  double output_colors[6] = { 50.0, 100.0, -100.0, 75.0, -75.1, 75.0 };
   WU_LABRECOLORERR* err;
-  int result = wu_lab_recolor(input_file, output_file, err);
+
+  int result = wu_lab_recolor(input_file, output_file, input_colors, output_colors,
+                              number_colors, err);
   assert(!result);
 
   assert(*err == WU_NULL_IMAGE);
@@ -42,6 +52,9 @@ void test_lab_recolor_with_null_image() {
 void test_lab_recolor_with_invalid_image_type() {
   FILE *input_file;
   FILE *output_file;
+  int number_colors = 2;
+  double input_colors[6] = { 100.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+  double output_colors[6] = { 50.0, 100.0, -100.0, 75.0, -75.1, 75.0 };
   WU_LABRECOLORERR* err;
 
   input_file = fopen("test/fixtures/no_image.txt", "r");
@@ -49,7 +62,8 @@ void test_lab_recolor_with_invalid_image_type() {
 
   output_file = tmpfile();
 
-  int result = wu_lab_recolor(input_file, output_file, err);
+  int result = wu_lab_recolor(input_file, output_file, input_colors, output_colors,
+                              number_colors, err);
   assert(!result);
   assert(*err == WU_MAGICK_WAND_ERR);
 }

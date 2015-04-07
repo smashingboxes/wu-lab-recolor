@@ -81,7 +81,7 @@ lab__recolor_EXTERNAL_OBJECTS =
 
 src/lab-recolor: src/CMakeFiles/lab-recolor.dir/main.c.o
 src/lab-recolor: src/CMakeFiles/lab-recolor.dir/build.make
-src/lab-recolor: build/libLabRecolor.a
+src/lab-recolor: src/libLabRecolor.a
 src/lab-recolor: /usr/lib/x86_64-linux-gnu/libMagickWand.so
 src/lab-recolor: src/CMakeFiles/lab-recolor.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking C executable lab-recolor"

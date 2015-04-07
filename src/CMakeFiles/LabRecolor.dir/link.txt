@@ -1,2 +1,2 @@
-/usr/bin/ar cq ../build/libLabRecolor.a  CMakeFiles/LabRecolor.dir/lab_recolor.c.o
-/usr/bin/ranlib ../build/libLabRecolor.a
+/usr/bin/ar cq libLabRecolor.a  CMakeFiles/LabRecolor.dir/lab_recolor.c.o
+/usr/bin/ranlib libLabRecolor.a

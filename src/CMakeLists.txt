@@ -1,5 +1,6 @@
 project(MainLib)
 set(CMAKE_C_FLAGS "-Wall -g")
+
 add_library(LabRecolor lab_recolor.c lab_recolor.h)
 add_executable(lab-recolor main.c)
 

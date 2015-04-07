@@ -1,1 +1,1 @@
-/usr/bin/cc  -Wall -g   CMakeFiles/lab-recolor.dir/main.c.o  -o lab-recolor -rdynamic ../build/libLabRecolor.a -lm -lMagickWand 
+/usr/bin/cc  -Wall -g   CMakeFiles/lab-recolor.dir/main.c.o  -o lab-recolor -rdynamic libLabRecolor.a -lm -lMagickWand 

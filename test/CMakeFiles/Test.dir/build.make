@@ -81,7 +81,7 @@ Test_EXTERNAL_OBJECTS =
 
 test/Test: test/CMakeFiles/Test.dir/test.c.o
 test/Test: test/CMakeFiles/Test.dir/build.make
-test/Test: build/libLabRecolor.a
+test/Test: src/libLabRecolor.a
 test/Test: /usr/lib/x86_64-linux-gnu/libMagickWand.so
 test/Test: test/CMakeFiles/Test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking C executable Test"
