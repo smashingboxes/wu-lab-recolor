@@ -1,1 +1,0 @@
-/usr/bin/cc     CMakeFiles/Test.dir/test.c.o  -o Test -rdynamic ../src/libLabRecolor.a -lm -lMagickWand 
