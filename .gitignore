@@ -1,2 +1,10 @@
 /build/
 /Testing/
+CMakeCache.txt
+CMakeFiles/
+CTestTestfile.cmake
+cmake_install.cmake
+src/CMakeFiles/
+src/cmake_install.cmake
+test/CMakeFiles/
+test/cmake_install.cmake
