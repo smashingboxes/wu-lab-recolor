@@ -10,4 +10,4 @@ before_install:
   - sudo apt-get -y --reinstall install imagemagick
   - sudo apt-get -y --reinstall install cmake
 
-script: make && test/Test
+script: cmake . && make && test/Test
