@@ -8,5 +8,6 @@ cache:
 before_install:
   - sudo add-apt-repository -y ppa:moti-p/cc
   - sudo apt-get -y --reinstall install imagemagick
+  - sudo apt-get -y --reinstall install cmake
 
 script: make && test/Test
