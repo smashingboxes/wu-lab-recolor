@@ -21,7 +21,7 @@
 
 static double* wu_input_colors;
 static double* wu_output_colors;
-static unsigned int wu_color_count = NULL;
+static unsigned int wu_color_count;
 
 void _wu_setup_color_arrays(double* input_colors, double* output_colors) {
   wu_input_colors = malloc(wu_color_count*3*sizeof(double));

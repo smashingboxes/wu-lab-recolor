@@ -35,18 +35,18 @@ void test_lab_recolor() {
 }
 
 void test_lab_recolor_with_null_image() {
-  FILE* input_file = fopen("garbagefilename", "r");
+  FILE* input_file = NULL;
   FILE* output_file = NULL;
   int number_colors = 2;
   double input_colors[6] = { 100.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
   double output_colors[6] = { 50.0, 100.0, -100.0, 75.0, -75.1, 75.0 };
-  WU_LABRECOLORERR* err;
+  WU_LABRECOLORERR err;
 
   int result = wu_lab_recolor(input_file, output_file, input_colors, output_colors,
-                              number_colors, err);
+                              number_colors, &err);
   assert(!result);
 
-  assert(*err == WU_NULL_IMAGE);
+  assert(err == WU_NULL_IMAGE);
 }
 
 void test_lab_recolor_with_invalid_image_type() {
@@ -55,7 +55,7 @@ void test_lab_recolor_with_invalid_image_type() {
   int number_colors = 2;
   double input_colors[6] = { 100.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
   double output_colors[6] = { 50.0, 100.0, -100.0, 75.0, -75.1, 75.0 };
-  WU_LABRECOLORERR* err;
+  WU_LABRECOLORERR err;
 
   input_file = fopen("test/fixtures/no_image.txt", "r");
   assert(input_file);
@@ -63,9 +63,9 @@ void test_lab_recolor_with_invalid_image_type() {
   output_file = tmpfile();
 
   int result = wu_lab_recolor(input_file, output_file, input_colors, output_colors,
-                              number_colors, err);
+                              number_colors, &err);
   assert(!result);
-  assert(*err == WU_MAGICK_WAND_ERR);
+  assert(err == WU_MAGICK_WAND_ERR);
 }
 
 void test_lab_from_string() {

@@ -8,3 +8,4 @@ src/CMakeFiles/
 src/cmake_install.cmake
 test/CMakeFiles/
 test/cmake_install.cmake
+Makefile
