@@ -1,5 +1,5 @@
-CFLAGS+=-Wall -I./src
-CC=gcc
+CFLAGS+=-Wall -I./src --std=c99
+CC?=clang # or GCC if you're into that.
 VERSION=0.0.1
 
 # Set up image magick paths.  When building you'll need to 
