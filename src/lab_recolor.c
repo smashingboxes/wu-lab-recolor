@@ -13,6 +13,7 @@
 
 #define return_with_wand_error(wand) \
   description = MagickGetException(wand, &severity); \
+  wu_set_last_error(description); \
   fprintf(stderr, "%s %s %lu %s\n", GetMagickModule(),description); \
   description = (char *)MagickRelinquishMemory(description); \
   return_with_error(WU_MAGICK_WAND_ERR);
@@ -22,6 +23,37 @@
 static double* wu_input_colors;
 static double* wu_output_colors;
 static unsigned int wu_color_count;
+static char* wu_last_error = NULL;
+
+// Allocates a string to hold a string with the given number of characters
+// (The given strlen should not include the NULL byte)
+static char* alloc_str(size_t strlen) {
+  return (char*) malloc(sizeof(char) * (char_len + 1));
+}
+
+static void wu_clear_last_error() {
+  if(wu_last_error != NULL)
+    free(wu_last_error);
+}
+
+static void wu_set_last_error(const char* msg) {
+  size_t msg_len = strlen(msg);
+
+  wu_clear_last_error();
+
+  wu_last_error = alloc_str(msg_len + 1);
+  strncpy(wu_last_error, msg, msg_len + 1);
+}
+
+// Returns a copy of this unit's static last_error string. The caller
+// is responsible for freeing the returned string.
+char* wu_get_last_error() {
+  size_t errlen = strlen(wu_last_error);
+  char* errstr = alloc_str(msg_len + 1);
+
+  strncpy(errstr, wu_last_error, msg_len + 1);
+  return errstr;
+}
 
 void _wu_setup_color_arrays(double* input_colors, double* output_colors) {
   wu_input_colors = malloc(wu_color_count*3*sizeof(double));
