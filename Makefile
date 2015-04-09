@@ -29,6 +29,9 @@ lib/wu-lab-recolor.o:
 bin/test: lib/wu-lab-recolor.o
 	$(call cc-command,-o bin/test lib/wu-lab-recolor.o test/test.c)
 
+clean: ; rm -f lib/wu-lab_recolor.o bin/wu-lab-recolor bin/test
+.PHONY: clean
+
 test: bin/test
 	bin/test
 .PHONY: test
