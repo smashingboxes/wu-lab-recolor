@@ -10,7 +10,7 @@
 void test_lab_recolor() {
   FILE *input_file;
   FILE *output_file;
-  WU_LABRECOLORERR* err;
+  WU_LABRECOLORERR err;
 
   int number_colors = 2;
   double input_colors[6] = { 100.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
@@ -22,7 +22,7 @@ void test_lab_recolor() {
   output_file = fopen("test.tif", "w");
 
   int result = wu_lab_recolor(input_file, output_file, input_colors, output_colors,
-                              number_colors, err);
+                              number_colors, &err);
   assert(result);
 
   fseek(output_file, 0L, SEEK_END);
